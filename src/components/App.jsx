@@ -19,7 +19,6 @@ class App extends Component {
   };
 
   changeFilter = e => {
-    console.log(e.target.value);
     this.setState({
       filter: e.target.value,
     });
@@ -42,14 +41,12 @@ class App extends Component {
     data.id = nanoid();
     const nameToLowerCase = data.name.toLowerCase();
 
-    let add = false;
-    this.state.contacts.forEach(elem => {
-      if (elem.name.toLowerCase() === nameToLowerCase) {
-        alert(`${data.name} ти такий один на весь світ`);
-        add = true;
-      }
-    });
-    if (add) {
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLowerCase() === nameToLowerCase
+      )
+    ) {
+      alert(`${data.name} ти такий один на весь світ`);
       return;
     }
 
