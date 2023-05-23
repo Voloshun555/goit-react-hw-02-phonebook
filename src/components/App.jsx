@@ -33,20 +33,17 @@ class App extends Component {
     );
   };
 
-  formSabmitHendel = data => {
-    this.addContact(data);
-  };
-
+ 
   addContact = data => {
     data.id = nanoid();
     const nameToLowerCase = data.name.toLowerCase();
 
     if (
       this.state.contacts.find(
-        contact => contact.name.toLowerCase() === nameToLowerCase
+        contact => contact.name.toLowerCase() === nameToLowerCase || contact.number === data.number
       )
     ) {
-      alert(`${data.name} ти такий один на весь світ`);
+      alert(`${data.name} або ${data.number} вже є в телефонній книзі`);
       return;
     }
 
@@ -69,7 +66,7 @@ class App extends Component {
     return (
       <div className={css.appDiv}>
         <h1 className={css.title}>Телефонна книга</h1>
-        <ContactsForm onSubmit={this.formSabmitHendel} />
+        <ContactsForm onSubmit={this.addContact} />
         <h3>Тіпа твої друзі: {contacts.length}- штука</h3>
         <Filter value={filter} onChange={this.changeFilter} />
         {contacts.length ? (

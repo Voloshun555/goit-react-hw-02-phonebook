@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import css from './contactForm.module.css';
+import PropTypes from 'prop-types'
 
 class ContactsForm extends Component {
   state = {
     name: '',
     number: '',
   };
-
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  }
   handleChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });

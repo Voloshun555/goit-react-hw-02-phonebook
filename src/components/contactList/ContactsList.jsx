@@ -1,4 +1,4 @@
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const ContactList = ({ contacts, onDeletContacts }) => {
   return (
@@ -17,13 +17,13 @@ export const ContactList = ({ contacts, onDeletContacts }) => {
   );
 };
 
-ContactList.propType = {
-  contacts: PropType.arrayOf(
-    PropType.shape({
-      name: PropType.string.isRequired,
-      number: PropType.string.isRequired,
-      id: PropType.string.isRequired,
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onDeletContacts: PropType.func.isRequired,
+  onDeletContacts: PropTypes.func.isRequired,
 };
